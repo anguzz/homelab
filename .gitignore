@@ -1,0 +1,11 @@
+*.iso
+*.img
+*.qcow2
+*.vmdk
+*.log
+*.bak
+*.key
+*.pem
+*.crt
+*.env
+secrets.yaml
