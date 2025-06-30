@@ -1,0 +1,16 @@
+agent: 1
+boot: order=scsi0;ide2;net0
+cores: 2
+cpu: x86-64-v2-AES
+ide2: local:iso/ubuntu-24.04.2-live-server-amd64.iso,media=cdrom,size=3137758K
+memory: 2048
+meta: creation-qemu=9.2.0,ctime=1750999065
+name: k8s-master
+net0: virtio=BC:24:11:E6:AB:D6,bridge=vmbr0,firewall=1
+numa: 0
+ostype: l26
+scsi0: local-lvm:vm-100-disk-0,iothread=1,size=20G
+scsihw: virtio-scsi-single
+smbios1: uuid=2207847b-00de-45e6-8015-217d43802e37
+sockets: 1
+vmgenid: 5f500f15-242a-46f7-9671-00d78e885fcb
