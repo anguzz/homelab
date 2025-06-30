@@ -30,3 +30,4 @@ Helper daemon that runs inside the VM, allows the Proxmox host to communicate mo
 - advanced memory management feature for multi-socket systems, tries to optimize memory patterns associated with memory and cpus
 - not really needed for single socket devices, or using small vms that don't need performance tuning
 - it generally helps performance on multi socket cpus and larger memory pools
+
