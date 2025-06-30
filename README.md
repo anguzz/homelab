@@ -27,8 +27,9 @@ homelab/
 - Explore other options proxmox has to integare with github for this repo.
 - Make vms/ folder dynamically managed, explore stuff like `qm list`, `qm config`, or `proxmox-backup-client` to auto-generate per-VM config folders
 - Set up kubeadm on `k8s-master`
-- Test if current hardware can support an additional `k8s-node` VM, measure CPU, RAM, and disk impact before cloning or adding
 - Configure daily snapshot jobs or PBS (Proxmox Backup Server)
 - Harden SSH and set up 2FA for Proxmox
 - Explore exposing Proxmox via pve.angs.dev securely through cloudflare tunels or similar (long term)
 - See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing)
+- Configure flox and pull [Peeko](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
+

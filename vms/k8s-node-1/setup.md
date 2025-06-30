@@ -8,7 +8,7 @@
 | **Boot Order**   | CD-ROM (IDE2), Disk (SCSI0)                            |
 | **Disk**         | 20GB (SCSI, local-lvm, IOThread=on)                    |
 | **SCSI Controller** | VirtIO SCSI single                                  |
-| **Memory**       | 2048 MB                                                |
+| **Memory**       | 4096 MB                                                |
 | **CPU**          | 1 socket, 2 cores (x86-64-v2-AES)                      |
 | **NUMA**         | Disabled (0)                                           |
 | **Network**      | VirtIO, bridge=vmbr0, firewall=enabled (net0)         |

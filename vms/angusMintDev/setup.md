@@ -10,7 +10,7 @@
 | **Boot Order**      | CD-ROM (IDE2), Disk (SCSI0)                         |
 | **Disk**            | 30GB (SCSI, local-lvm, IOThread enabled)           |
 | **SCSI Controller** | VirtIO SCSI single                                  |
-| **Memory**          | 4096 MB (4 GB)                                      |
+| **Memory**          | 8192  MB (8 GB)                                      |
 | **CPU**             | 1 socket, 2 cores (`x86-64-v2-AES`)                 |
 | **NUMA**            | Disabled                                            |
 | **Network**         | VirtIO (paravirtualized), bridge: `vmbr0`          |
