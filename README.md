@@ -31,5 +31,5 @@ homelab/
 - Harden SSH and set up 2FA for Proxmox
 - Explore exposing Proxmox via pve.angs.dev securely through cloudflare tunels or similar (long term)
 - See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing)
-- Configure flox and pull [Peeko](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
+- Configure flox and pull [charliettaylor](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
 
