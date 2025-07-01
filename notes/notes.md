@@ -31,3 +31,11 @@ Helper daemon that runs inside the VM, allows the Proxmox host to communicate mo
 - not really needed for single socket devices, or using small vms that don't need performance tuning
 - it generally helps performance on multi socket cpus and larger memory pools
 
+## VM config sync automation
+I would make it a habit to run a git pull before syncing the vm configs so that we stay up to date on any changes I make on the documenation before pushing config syncs.
+
+`cd /root/homelab`
+`git pull --rebase`
+`exportncommit`
+
+
