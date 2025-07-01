@@ -50,4 +50,9 @@ When pushing for the first time, Git may prompt for credentials. paste your GitH
 
 #### warning: ensure proxmox vm name matches our vms name on github at `/anguzz/homelab/tree/main/vms` otherwise it will create the directory and export it.
 
+### Demo 
+When working properly it should look like this. 
+![image](https://github.com/user-attachments/assets/f1c196c8-749d-4052-9c0b-cb54127e34f7)
+
+
 
