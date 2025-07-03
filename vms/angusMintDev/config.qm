@@ -13,4 +13,5 @@ scsi0: local-lvm:vm-101-disk-0,iothread=1,size=30G
 scsihw: virtio-scsi-single
 smbios1: uuid=ce16aa9c-5332-4fe9-8a80-6e72bfb12385
 sockets: 1
+usb1: host=0e8d:7612
 vmgenid: 2fc14627-a3bb-4bb5-ab95-bb8fbfdd1cbd
