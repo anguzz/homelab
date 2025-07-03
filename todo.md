@@ -5,6 +5,7 @@ Just some stuff I want to do and have been thinking about.
 ## IoT Enterprise LTSC Jump Box Tasks
 
 ### System Hardening & Optimization
+- [ ] Setup Google Chrome RDP
 - [ ] Configure Tailscale
 - [ ] Apply GPO / registry tweaks to disable telemetry
 - [ ] Strip remaining unnecessary services via `services.msc`
