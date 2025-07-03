@@ -28,5 +28,5 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Join worker nodes to the `k8s-master` using `kubeadm join`
 
 ###  Dev & Software
-- [ ] See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing)
+- [x] See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing) (7/2/25)
 - [ ] Configure flox and pull [charliettaylor](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
