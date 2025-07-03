@@ -8,6 +8,7 @@ Home lab documentation repository. This repo tracks the setup, configuration, an
 ```bash
 homelab/
 ├── README.md                    # Project overview
+├── todo.md                      # to do list
 ├── Notes/                       # Brain dump 
 ├── proxmox/                     # Proxmox system config 
 │   ├── README.md
