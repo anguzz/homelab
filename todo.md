@@ -30,3 +30,9 @@ Just some stuff I want to do and have been thinking about.
 ###  Dev & Software
 - [x] See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing) (7/2/25)
 - [ ] Configure flox and pull [charliettaylor](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
+
+### Media server VM
+- [ ] procure/purchase a NAS  
+- [ ] research jellyfin vm setup
+
+
