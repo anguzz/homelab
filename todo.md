@@ -37,4 +37,6 @@ Just some stuff I want to do and have been thinking about.
 - [ ] procure/purchase a NAS  
 - [ ] research jellyfin vm setup
 
-
+### Automation
+- [ ] merge  `export_vm_configs` and `sync_vm_configs_git` into one script
+- [ ] expand config export to include more fields
