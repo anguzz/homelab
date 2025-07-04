@@ -63,3 +63,17 @@ The opposite of this is `qm set 101 -delete usb0` to remove it. You can verify t
 
 ----------------------------- 
 - *note, I tried to do the methods above with my PVE admin, but since its a hardware mod I need `Sys.Modify` minimum added to my pve admin, I just quickly swapped to root to make the change due to simplicity.*
+
+
+## Changing Display Resolution – Windows IoT VM
+- After setting up RDP, I noticed I couldn't change the display resolution in Windows settings on my Windows IoT box.
+
+#### Steps to Enable Dynamic Resolution
+1)  ensure  [VirtIO drivers ISO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/) is mounted to the VM.
+2) Run `virtio-win-guest-tools.exe` from the mounted ISO (this installs QEMU guest agent and VirtIO GPU drivers).
+3) In Proxmox, go to:
+- Hardware > Display > Edit
+- Select VirtIO-GPU as the graphic card
+- Set memory to 64–128 MiB
+4) Reboot the VM.
+5) Resolution should now be changeable in Windows.
