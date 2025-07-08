@@ -43,6 +43,11 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Continue to read up on EDR internals, evasion methods
 - [ ] Write summary of EDR behavior/version
 
+### OpenVAS Dedicated Scanner VM
+- [ ] setup Debian 12vm, 2-4 cores, 4-8gbs, 40+ gbs disk
+- [ ] install OpenVAS, run a scan.
+
+
 ### Automation
 - [x] merge  `export_vm_configs` and `sync_vm_configs_git` into one script
 - [x] expand config export to include more fields
