@@ -44,6 +44,6 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Write summary of EDR behavior/version
 
 ### Automation
-- [ ] merge  `export_vm_configs` and `sync_vm_configs_git` into one script
-- [ ] expand config export to include more fields
+- [x] merge  `export_vm_configs` and `sync_vm_configs_git` into one script
+- [x] expand config export to include more fields
 
