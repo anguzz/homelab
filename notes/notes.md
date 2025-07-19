@@ -1,11 +1,5 @@
-# Proxmox Notes Sync
-_Last synced: 
-
-<<<<<<< HEAD
-## Proxmox Cheatsheet 
-This page presents a list of commonly used commands for proxmox.
-
-https://sweworld.net/cheatsheets/proxmox/
+# Notes
+This directory serves as a brain dump for all my notes on random things I learn, find interesting, or just want to throw in here for the sake of throwing in here.
 
 ## CIDR notes
 -----------------------------------------------------------
@@ -31,23 +25,18 @@ Helper daemon that runs inside the VM, allows the Proxmox host to communicate mo
 - Live backup and snapshot coordination
 - File system freeze/thaw (for consistent backups)
 - Better VM status monitoring
------------------------------------------------------------
 
 ## NUMA (Non-Uniform Memory Access)
 - advanced memory management feature for multi-socket systems, tries to optimize memory patterns associated with memory and cpus
 - not really needed for single socket devices, or using small vms that don't need performance tuning
 - it generally helps performance on multi socket cpus and larger memory pools
------------------------------------------------------------
 
 ## VM config sync automation
 I would make it a habit to run a git pull before syncing the vm configs so that we stay up to date on any changes I make on the documenation before pushing config syncs.
 
-```bash
-cd /root/homelab
-git pull --rebase
-exportncommit
-```
------------------------------------------------------------
+`cd /root/homelab`
+`git pull --rebase`
+`exportncommit`
 
 ## Enable VM usb passthrough
 - open up proxmox console, type lsusb to spot check the usb you want to add shows up and is recognized by the hardware, in my case I can see the mediaTek Adapater below
@@ -72,9 +61,9 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 The opposite of this is `qm set 101 -delete usb0` to remove it. You can verify the changes using `qm config 101`. 
 
+----------------------------- 
 - *note, I tried to do the methods above with my PVE admin, but since its a hardware mod I need `Sys.Modify` minimum added to my pve admin, I just quickly swapped to root to make the change due to simplicity.*
 
------------------------------------------------------------
 
 ## Changing Display Resolution – Windows IoT VM
 - After setting up RDP, I noticed I couldn't change the display resolution in Windows settings on my Windows IoT box.
@@ -88,38 +77,3 @@ The opposite of this is `qm set 101 -delete usb0` to remove it. You can verify t
 - Set memory to 64–128 MiB
 4) Reboot the VM.
 5) Resolution should now be changeable in Windows.
-
-
------------------------------------------------------------
-
-
-## Flox setup 
-
-how I installed and activated a flox environment on my system using a remote environment from FloxHub.
-
-1. Install Flox
-
-Download the `.deb` package for the latest stable release:
-`curl -Lo flox.deb https://downloads.flox.dev/by-env/stable/deb/flox-1.5.1.x86_64-linux.deb`
-
-2. Install the package 
-
-`sudo dpkg -i ~/Downloads/flox-1.5.1.x86_64-linux.deb`
-
-3. pull the enviroment 
-`flox pull charliettaylor/default`
-
-4. activate the enviroment 
-
-`flox activate`
-
-- or to activate and check for updates
-
-`flox activate -r charliettaylor/default`
-
-5. exit  and close the enviroment enwhen necessary with `exit` then use step 4 when wanting to use again.
-
-=======
-## Datacenter Notes
-
->>>>>>> ab018960849b4a6b177be74030b68783bb358093
