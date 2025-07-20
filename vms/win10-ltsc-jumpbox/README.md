@@ -23,11 +23,11 @@
 | **BIOS**               | ovmf                       |
 | **Machine Type**       | pc-q35-9.2+pve1                     |
 | **Boot Device**        | N/A                       |
-| **Boot Order**         | order=ide2;scsi0;ide0;net0                      |
-| **Disk Size**          | 30G                           |
+| **Boot Order**         | order=ide2;ide0;scsi0;net0                      |
+| **Disk Size**          | 35G                           |
 | **ISO Attached**       |  local                           |
 | **Network Bridge**     | vmbr0                       |
-| **MAC Address**        | BC:24:11:AC:E7:B3                            |
+| **MAC Address**        | BC:24:11:87:C9:AB                            |
 | **NIC Model**          | virtio                       |
 | **VLAN Tag**           | none                          |
 | **QEMU Guest Agent**   | 1                     |

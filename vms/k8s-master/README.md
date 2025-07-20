@@ -27,7 +27,7 @@
 | **Disk Size**          | 20G                           |
 | **ISO Attached**       |  local                           |
 | **Network Bridge**     | vmbr0                       |
-| **MAC Address**        | BC:24:11:E6:AB:D6                            |
+| **MAC Address**        | BC:24:11:38:7E:5D                            |
 | **NIC Model**          | virtio                       |
 | **VLAN Tag**           | none                          |
 | **QEMU Guest Agent**   | 1                     |

@@ -24,12 +24,12 @@
 | **Machine Type**       | i440fx                     |
 | **Boot Device**        | N/A                       |
 | **Boot Order**         | order=scsi0;ide2;net0                      |
-| **Disk Size**          | 30G                           |
+| **Disk Size**          | 50G                           |
 | **ISO Attached**       |  local                           |
 | **Network Bridge**     | vmbr0                       |
-| **MAC Address**        | BC:24:11:74:5B:EF                            |
+| **MAC Address**        | BC:24:11:17:00:DD                            |
 | **NIC Model**          | virtio                       |
 | **VLAN Tag**           | none                          |
 | **QEMU Guest Agent**   | 1                     |
 | **PCI Passthrough**    | none                           |
-| **USB Devices**        | host=0e8d:7612                           |
+| **USB Devices**        | none                           |
