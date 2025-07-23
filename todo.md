@@ -20,11 +20,6 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Set up monitoring or restart watchdog for Parsec
 - [ ] Create backup image or template for quick redeployment
 
-### Kubernetes lab 
-- [ ] Set up kubeadm on `k8s-master`
-- [ ] Prepare Kubernetes Worker Nodes for Testing
-- [ ] Look into container runtimes (like Containerd??)
-- [ ] Join worker nodes to the `k8s-master` using `kubeadm join`
 
 ###  Dev & Software lab
 - [x] See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing) (7/2/25)
@@ -48,7 +43,32 @@ Just some stuff I want to do and have been thinking about.
 - [ ] install OpenVAS, run a scan.
 
 
-### Automation
+### config export automations 
 - [x] merge  `export_vm_configs` and `sync_vm_configs_git` into one script
 - [x] expand config export to include more fields
 
+### Infrastructure-as-Code Kubernetes Lab Setup (via automation-vm)
+- [x] Set up `automation-vm` (Ubuntu 24.04, 2 cores, 4GB RAM, 32GB disk)
+- [x] Install Terraform, Ansible, Git, and SSH keys on `automation-vm`
+
+####  Prepare Cloud-Init Templates for Proxmox (One-time setup)
+- [ ] Choose an image (prob `ubuntu-22.04-server-cloudimg-amd64.img`)
+- [ ] Create a new VM in Proxmox using this cloud image
+  - Set disk bus to `VirtIO`
+  - Add a second CD-ROM drive of type `cloud-init`
+  - Enable QEMU Guest Agent
+- [ ] Boot the VM and install:
+  - `cloud-init`
+  - `qemu-guest-agent`
+- [ ] Shutdown and convert the VM into a **template**
+- [ ] Note the name (e.g., `ubuntu-cloud-template`) for Terraform use
+- [ ] Repeat this process to create a `mint-dev-template` for dev tools
+
+####  VM Provisioning and Cluster Setup via Terraform + Ansible
+- [ ] Create Terraform config (`main.tf`) to provision `k8s-master`, `k8s-node-1`, and `k8s-node-2` using Proxmox API and clone the cloud-init template
+- [ ] Inject SSH keys via cloud-init and assign static IPs to each VM
+- [ ] Build Ansible inventory and playbook to install container runtime, kubeadm, and kubelet
+- [ ] Use `kubeadm init` on `k8s-master` and capture join token
+- [ ] Use `kubeadm join` on workers via Ansible
+- [ ] Validate cluster with `kubectl get nodes`
+- [ ] Optional: Add Kubernetes dashboard and more features
