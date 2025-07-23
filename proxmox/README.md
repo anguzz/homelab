@@ -12,7 +12,8 @@ I'd like to expand or add more Proxmox nodes in the future.
   - Model: `MZ-V7P512`  
   - Interface: PCIe Gen3 x4 NVMe  
   - NAND: V-NAND MLC  
-  - Rated Power: DC 3.3V ⎓ 2.9A- **Hypervisor:** Proxmox VE 8.4.0
+  - Rated Power: DC 3.3V ⎓ 2.9A-
+- **Hypervisor:** Proxmox VE 8.4.0
 - **Host FQDN:** pve.angs.dev
 - **IP Address:** 192.168.1.10/24
 - **Gateway:** 192.168.1.254
