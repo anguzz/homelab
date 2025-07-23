@@ -8,7 +8,11 @@ I'd like to expand or add more Proxmox nodes in the future.
 - **Host:** [ThinkCentre Neo 50q Gen 4 Tiny (Intel)](https://www.lenovo.com/us/en/p/desktops/thinkcentre/thinkcentre-neo-series/thinkcentre-neo-50q-gen-4-tiny-intel/len102c0033)
 - **CPU**: 13th Generation Intel Core i5-13420H Processor (4 Performance + 4 Efficiency Cores, up to 4.6GHz)
 - **RAM**: 32GBs DDR4-3200MT/s (SODIMM) *(originally 16gbs but added another stick)*
-- **Memory**: 256 GB SSD M.2 2280 PCIe Gen4 TLC Opal *(upgrade in future)*
+- **Primary Storage (NVMe):** Samsung 970 PRO 512GB NVMe M.2  
+  - Model: `MZ-V7P512`  
+  - Interface: PCIe Gen3 x4 NVMe  
+  - NAND: V-NAND MLC  
+  - Rated Power: DC 3.3V ⎓ 2.9A-
 - **Hypervisor:** Proxmox VE 8.4.0
 - **Host FQDN:** pve.angs.dev
 - **IP Address:** 192.168.1.10/24
