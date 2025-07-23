@@ -1,7 +1,5 @@
-# Proxmox Notes Sync
-_Last synced: 
+# Proxmox Notes 
 
-<<<<<<< HEAD
 ## Proxmox Cheatsheet 
 This page presents a list of commonly used commands for proxmox.
 
@@ -47,6 +45,14 @@ cd /root/homelab
 git pull --rebase
 exportncommit
 ```
+
+If i do need to sync to the main origin after making changes elsewhere and there's no other changes just run
+```bash
+git fetch origin
+git reset --hard origin/main
+git clean -fd
+```
+This will discard local changes and untracked files, mainly incase I just incase I ran a `syncvm` or `syncpve` pre-emptively. 
 -----------------------------------------------------------
 
 ## Enable VM usb passthrough
