@@ -13,12 +13,10 @@ Just some stuff I want to do and have been thinking about.
 ### IoT LTSC Jump Box 
 - [x] Setup Google Chrome RDP
 - [x] Enable Dynamic Resolution
-- [ ] Configure Tailscale
-- [ ] Apply GPO / registry tweaks to disable telemetry
-- [ ] Strip remaining unnecessary services via `services.msc`
+- [x] Apply GPO / registry tweaks to disable telemetry (used `automation\scripts\windows\disableTelemetry.ps1`)
+- [x] Strip remaining unnecessary services via `services.msc`
 - [ ] Schedule snapshot rotation or backups
-- [ ] Set up monitoring or restart watchdog for Parsec
-- [ ] Create backup image or template for quick redeployment
+- [ ] Create backup image or template for quick redeployment 
 
 
 ###  Dev & Software lab
