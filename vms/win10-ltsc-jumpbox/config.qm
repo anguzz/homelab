@@ -1,6 +1,6 @@
 agent: 1
 bios: ovmf
-boot: order=ide2;ide0;scsi0;net0
+boot: order=scsi0;ide2;ide0;net0
 cores: 2
 cpu: x86-64-v2-AES
 efidisk0: local-lvm:vm-104-disk-0,efitype=4m,pre-enrolled-keys=1,size=4M

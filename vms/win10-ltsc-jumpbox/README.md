@@ -23,7 +23,7 @@
 | **BIOS**               | ovmf                       |
 | **Machine Type**       | pc-q35-9.2+pve1                     |
 | **Boot Device**        | N/A                       |
-| **Boot Order**         | order=ide2;ide0;scsi0;net0                      |
+| **Boot Order**         | order=scsi0;ide2;ide0;net0                      |
 | **Disk Size**          | 35G                           |
 | **ISO Attached**       |  local                           |
 | **Network Bridge**     | vmbr0                       |
