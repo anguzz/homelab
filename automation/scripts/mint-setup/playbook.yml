@@ -1,0 +1,107 @@
+# playbook.yml
+---
+- name: Configure a Mint Development Machine
+  hosts: all  # This targets all hosts in your inventory file
+  become: yes # This is like using 'sudo' for all tasks
+
+  vars:
+    # Define a variable for the user you want to run user-specific tasks for.
+    # This assumes the user 'your_vm_user' exists on the VM.
+    # On a local run, this will be your current user.
+    target_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
+
+  tasks:
+    - name: 1. System Update
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+        autoremove: yes
+
+    - name: 2. Install Core Tools (APT)
+      ansible.builtin.apt:
+        name:
+          - git
+          - curl
+          - wget
+          - python3-pip
+          - nodejs
+          - npm
+        state: present
+
+    - name: 3. Install Flox
+      ansible.builtin.shell:
+        cmd: "curl -s https://get.flox.dev/install.sh | bash"
+        creates: "/home/{{ target_user }}/.flox/bin/flox" # Prevents re-running
+
+    - name: 4. Install Visual Studio Code
+      block:
+        - name: Add Microsoft GPG key
+          ansible.builtin.get_url:
+            url: https://packages.microsoft.com/keys/microsoft.asc
+            dest: /etc/apt/trusted.gpg.d/microsoft.asc
+            mode: '0644'
+            force: true
+        - name: Add VS Code repository
+          ansible.builtin.apt_repository:
+            repo: "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
+            state: present
+        - name: Install VS Code package
+          ansible.builtin.apt:
+            name: code
+            state: present
+            update_cache: yes
+
+    - name: 5. Install Spotify
+      block:
+        - name: Add Spotify GPG key
+          ansible.builtin.shell:
+            cmd: "curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg"
+            creates: /etc/apt/trusted.gpg.d/spotify.gpg
+        - name: Add Spotify repository
+          ansible.builtin.apt_repository:
+            repo: "deb http://repository.spotify.com stable non-free"
+            state: present
+        - name: Install Spotify package
+          ansible.builtin.apt:
+            name: spotify-client
+            state: present
+            update_cache: yes
+
+    - name: 6. Install GitHub Desktop
+      block:
+        - name: Add Shiftkey GPG key
+          ansible.builtin.get_url:
+            url: https://apt.packages.shiftkey.dev/gpg.key
+            dest: /etc/apt/trusted.gpg.d/shiftkey-packages.asc
+            mode: '0644'
+            force: true
+        - name: Add GitHub Desktop repository
+          ansible.builtin.apt_repository:
+            repo: "deb [arch=amd64] https://apt.packages.shiftkey.dev/ubuntu/ any main"
+            state: present
+        - name: Install GitHub Desktop package
+          ansible.builtin.apt:
+            name: github-desktop
+            state: present
+            update_cache: yes
+
+    # --- User-Specific Tasks (run without 'become: yes') ---
+    - name: User-specific setup
+      become: no # Run these tasks as the user, not as root
+      delegate_to: localhost # Ensures this runs on the control machine if needed
+      run_once: true # Ensures these tasks run only once per host
+      block:
+        - name: 7. Set Custom Background
+          ansible.builtin.copy:
+            src: files/background.jpg
+            dest: "/home/{{ target_user }}/background.jpg"
+        - name: Apply background with gsettings
+          ansible.builtin.command:
+            cmd: "gsettings set org.cinnamon.desktop.background picture-uri 'file:///home/{{ target_user }}/background.jpg'"
+          # This command needs to run in the user's graphical session context
+          # which can be tricky with SSH. This is a best-effort approach.
+
+        - name: 8. Create Bookmarks File
+          ansible.builtin.copy:
+            src: files/bookmarks.html
+            dest: "/home/{{ target_user }}/Desktop/import_my_bookmarks.html"
