@@ -22,6 +22,8 @@ Just some stuff I want to do and have been thinking about.
 ###  Dev & Software lab
 - [x] See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing) (7/2/25)
 - [x] Configure flox and pull [charliettaylor](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
+- [ ] Continue next steps on mint_setup.sh including bookmark setup, theme setup, panel + desktop adding apps
+
 
 ### Media server setup
 - [ ] procure/purchase storage to be used as NAS (maybe [Seagate Iron wolf](https://www.amazon.com/Seagate-IronWolf-Internal-Hard-Drive/dp/B09NHV3CK9?crid=2PHIQEP2OC6AD&dib=eyJ2IjoiMSJ9.oAqMhjaWQ2Ix7G5kzr9PCfd9w-zV-cDDPVJ5kPV4llipxSU54XbOUn9INYg_VDSfBn8JUGjwncGX81zvladRnhigb0CQEOMz619D7q-wT-QsMbwoh3TM_iJ04hjhgB6-UXSKpxg926hdhcbeb-aT-9vQe-8idlze_J7jlRTVvMNsebDXA_cdAwfkj6wsecWXtBBnyx6XGCrqDS1gkmir__oNW3kKkUSTY2iy9tJmHCg.L5uFm6KlC78g0lNbJ8o27xUoh3eBCgRQzrptctfRGnw&dib_tag=se&keywords=seagate%2Bironwolf&qid=1751849651&sprefix=%2Caps%2C482&sr=8-1&ufe=app_do%3Aamzn1.fos.9fe8cbfa-bf43-43d1-a707-3f4e65a4b666&th=1) or  [WD red plus ](https://www.amazon.com/Red-4TB-NAS-Hard-Drive/dp/B00EHBERSE) 4-10tbs

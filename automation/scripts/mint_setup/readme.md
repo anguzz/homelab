@@ -25,6 +25,7 @@ Reference: [VS Code Flatpak limitations](https://bentsukun.ch/posts/vscode-flatp
 - Firefox bookmarks
 - Enforce theme
 - More testing/refining on mint VMS and physical machines
+- Add installed apps to panel + desktop
 
 # usage from a remote machine
 `bash <(curl -fsSL https://raw.githubusercontent.com/anguzz/homelab/main/automation/scripts/mint_setup/setup.sh)`
