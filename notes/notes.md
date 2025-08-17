@@ -103,19 +103,19 @@ The opposite of this is `qm set 101 -delete usb0` to remove it. You can verify t
 
 how I installed and activated a flox environment on my system using a remote environment from FloxHub.
 
-1. Install Flox
+1) Install Flox
 
 Download the `.deb` package for the latest stable release:
 `curl -Lo flox.deb https://downloads.flox.dev/by-env/stable/deb/flox-1.5.1.x86_64-linux.deb`
 
-2. Install the package 
+2) Install the package 
 
 `sudo dpkg -i ~/Downloads/flox-1.5.1.x86_64-linux.deb`
 
-3. pull the enviroment 
+3) pull the enviroment 
 `flox pull charliettaylor/default`
 
-4. activate the enviroment 
+4) activate the enviroment 
 
 `flox activate`
 
@@ -123,5 +123,38 @@ Download the `.deb` package for the latest stable release:
 
 `flox activate -r charliettaylor/default`
 
-5. exit  and close the enviroment enwhen necessary with `exit` then use step 4 when wanting to use again.
+5) exit  and close the enviroment enwhen necessary with `exit` then use step 4 when wanting to use again.
 
+-----------------------------------------------------------
+
+
+
+## Enabling Two displays via Proxmox & SPICE
+
+1) Configure VM for Spice
+
+```bash
+sudo apt install spice-vdagent
+```
+
+2) Add Spice display drivers to VM PVE settings
+
+* Go to **VM → Hardware → Display**
+* Set to **Spice (Dual Monitor)**
+* Set **Memory** = `64 MiB`
+
+3) Download Virt-viewer on Windows Client
+
+* Download and install:
+  [virt-viewer-x86-11.0-1.0.msi](https://releases.pagure.org/virt-viewer/virt-viewer-x86-11.0-1.0.msi)
+
+4) Launching Spice via proxmox
+
+* In Proxmox, under your VM open the **Console** from the *top right* button (not the left tab).
+* Select **SPICE**.
+
+5) Virt Viewer - open 2nd display 
+
+* Sign into the VM via Virt-Viewer *(otherwise the following display option will be greyed out/unavailable)*
+* In Virt-Viewer, click the **monitor icon** (top-left).
+* From the dropdown, enable multiple displays.
