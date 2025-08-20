@@ -72,3 +72,23 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Use `kubeadm join` on workers via Ansible
 - [ ] Validate cluster with `kubectl get nodes`
 - [ ] Optional: Add Kubernetes dashboard and more features
+
+
+####  Proxmox monitoring display
+
+- [ ] Test Setup Netdata Cloud for Proxmox monitoring  
+    - Install Netdata on each Proxmox node: `apt update && apt install netdata -y`  
+    - Create account at https://app.netdata.cloud  
+    - Run claim command from Netdata Cloud on each node  
+    - Open app.netdata.cloud on Samsung tablet for live homelab dashboard  
+
+####  Add PVE nodes
+
+- [ ] Add two new Proxmox nodes (Dell OptiPlex 3050s) to cluster  
+    - Install Proxmox VE on each 3050  
+    - Join them to existing cluster  
+    - Add them to Netdata Cloud monitoring  
+
+
+
+
