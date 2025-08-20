@@ -74,21 +74,19 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Optional: Add Kubernetes dashboard and more features
 
 
-####  Proxmox monitoring display
+### Rack + Network Hardware
+- [ ] Rack homelab gear  
+    - Mount **Tecmojo 6U Network Rack, 10 inch Mini Server Rack with 2 Side Translucent Panels & 2 Top Handles, 7.87 inch Deep, White**  
+    - Install/secure Proxmox nodes + accessories  
+    - Cable manage power + networking  
 
-- [ ] Test Setup Netdata Cloud for Proxmox monitoring  
+- [ ] Setup Netdata Cloud for Proxmox monitoring  
     - Install Netdata on each Proxmox node: `apt update && apt install netdata -y`  
     - Create account at https://app.netdata.cloud  
     - Run claim command from Netdata Cloud on each node  
     - Open app.netdata.cloud on Samsung tablet for live homelab dashboard  
 
-####  Add PVE nodes
-
-- [ ] Add two new Proxmox nodes (Dell OptiPlex 3050s) to cluster  
-    - Install Proxmox VE on each 3050  
-    - Join them to existing cluster  
-    - Add them to Netdata Cloud monitoring  
-
-
-
-
+- [ ] Setup network hardware  
+    - Configure **Palo Alto PA-220 firewall** for lab subnet  
+    - Deploy **Netgear GS108PE 8-port Gigabit Smart Managed Plus switch**  
+    - Connect firewall, switch, and Proxmox nodes to rack layout
