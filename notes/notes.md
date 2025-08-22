@@ -179,3 +179,41 @@ curl -f -L https://raw.githubusercontent.com/Kastervo/OpenVAS-Installation/maste
 chmod +x openvas_install.sh 
 ./openvas_install.sh
 ```
+
+## OpenVAS Quick Scan Guide
+
+#### 1. Create Target
+- Go to **Configuration → Targets**  
+- Add IPs (e.g. `192.168.1.10, 192.168.1.11, 192.168.1.12`)  
+- Max Hosts = 3, Simultaneous = Yes  
+- Port List: **All TCP + Nmap Top 100 UDP**  
+- Alive Test: **Default (ICMP + TCP/ARP pings)**  
+
+#### 2. Create Task
+- Go to **Scans → Tasks → New Task**  
+- Select your target group  
+- Scan Config: **Full and Fast**  
+- Save + hit **Play**  
+
+#### 3. View Results
+- Reports under **Scans → Reports**  
+
+### Port List Options
+| Option # | Description              |
+|----------|--------------------------|
+| 1        | IANA TCP                 |
+| 2        | IANA TCP + UDP           |
+| 3        | All TCP + Top 100 UDP    |
+
+### Alive Test Options
+| Option # | Description     |
+|----------|-----------------|
+| 1        | ICMP            |
+| 2        | TCP ACK         |
+| 3        | TCP SYN         |
+| 4        | ARP             |
+| 5        | ICMP + ACK      |
+| 6        | ICMP + ARP      |
+| 7        | ACK + ARP       |
+| 8        | ICMP + ACK + ARP|
+| 9        | Consider Alive  |
