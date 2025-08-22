@@ -158,3 +158,14 @@ sudo apt install spice-vdagent
 * Sign into the VM via Virt-Viewer *(otherwise the following display option will be greyed out/unavailable)*
 * In Virt-Viewer, click the **monitor icon** (top-left).
 * From the dropdown, enable multiple displays.
+
+
+## Creating a Proxmox Cluster
+1. On the first PVE node: **Datacenter → Cluster → Create Cluster**  
+   - Name the cluster  
+   - Verify IP (autofills from node)  
+2. Copy the **Join Information** token.  
+3. On other PVE nodes: **Datacenter → Cluster → Join Cluster**  
+   - Paste token  
+   - Enter peer’s `root@pam` password  
+

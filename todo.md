@@ -11,17 +11,12 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Explore exposing Proxmox via pve.angs.dev securely through Cloudflare Tunnels or similar (long term)
 
 ### IoT LTSC Jump Box 
-- [x] Setup Google Chrome RDP
-- [x] Enable Dynamic Resolution
-- [x] Apply GPO / registry tweaks to disable telemetry (used `automation\scripts\windows\disableTelemetry.ps1`)
-- [x] Strip remaining unnecessary services via `services.msc`
 - [ ] Schedule snapshot rotation or backups
 - [ ] Create backup image or template for quick redeployment 
 
 
 ###  Dev & Software lab
-- [x] See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing) (7/2/25)
-- [x] Configure flox and pull [charliettaylor](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
+
 - [ ] Continue next steps on mint_setup.sh including bookmark setup, theme setup, panel + desktop adding apps
 
 
@@ -43,13 +38,6 @@ Just some stuff I want to do and have been thinking about.
 - [ ] install OpenVAS, run a scan.
 
 
-### config export automations 
-- [x] merge  `export_vm_configs` and `sync_vm_configs_git` into one script
-- [x] expand config export to include more fields
-
-### Infrastructure-as-Code Kubernetes Lab Setup (via automation-vm)
-- [x] Set up `automation-vm` (Ubuntu 24.04, 2 cores, 4GB RAM, 32GB disk)
-- [x] Install Terraform, Ansible, Git, and SSH keys on `automation-vm`
 
 ####  Prepare Cloud-Init Templates for Proxmox (One-time setup)
 - [ ] Choose an image (prob `ubuntu-22.04-server-cloudimg-amd64.img`)
@@ -74,19 +62,21 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Optional: Add Kubernetes dashboard and more features
 
 
-### Rack + Network Hardware
-- [ ] Rack homelab gear  
-    - Mount **Tecmojo 6U Network Rack, 10 inch Mini Server Rack with 2 Side Translucent Panels & 2 Top Handles, 7.87 inch Deep, White**  
-    - Install/secure Proxmox nodes + accessories  
-    - Cable manage power + networking  
+### Network Hardware 
+- [ ] Setup **Palo Alto PA-220**
 
-- [ ] Setup Netdata Cloud for Proxmox monitoring  
-    - Install Netdata on each Proxmox node: `apt update && apt install netdata -y`  
-    - Create account at https://app.netdata.cloud  
-    - Run claim command from Netdata Cloud on each node  
-    - Open app.netdata.cloud on Samsung tablet for live homelab dashboard  
+# Finished
+ Action items finished in no particular order
 
-- [ ] Setup network hardware  
-    - Configure **Palo Alto PA-220 firewall** for lab subnet  
-    - Deploy **Netgear GS108PE 8-port Gigabit Smart Managed Plus switch**  
-    - Connect firewall, switch, and Proxmox nodes to rack layout
+- [x] merge  `export_vm_configs` and `sync_vm_configs_git` into one script
+- [x] expand config export to include more fields
+- [x] Set up `automation-vm` (Ubuntu 24.04, 2 cores, 4GB RAM, 32GB disk)
+- [x] Install Terraform, Ansible, Git, and SSH keys on `automation-vm`
+- [x] See if I can passthrough a physical wireless NIC to angusMintDev to use for [Wi-Fi probe/sniffing](https://github.com/anguzz/wifi-pnl-probing) (7/2/25)
+- [x] Configure flox and pull [charliettaylor](https://hub.flox.dev/charliettaylor/default) flox config from floxhub on angusMintDev
+- [x] Rack homelab gear  
+- [x] Mount **Tecmojo 6U Network Rack**  
+- [x] Install/secure Proxmox nodes + accessories   
+- [x] Setup network hardware  
+- [x] Deploy **Netgear GS108PE 8-port Gigabit Smart Managed Plus switch** 
+- [x] Join all current PVE nodes to cluster
