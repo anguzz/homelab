@@ -1,68 +1,75 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
 
 REPO_DIR="/root/homelab"
 PVE_DIR="$REPO_DIR/proxmox"
-OUT_FILE="$PVE_DIR/pveperf.md"
 HISTORY_FILE="$PVE_DIR/pveperf_history.md"
+PVESH_TIMEOUT="3s"
+
+mkdir -p "$PVE_DIR"
+
+if [[ $EUID -ne 0 ]]; then
+  echo "This script must be run as root (use sudo)"
+  exit 1
+fi
 
 TS="$(date -Iseconds)"
 HOST="$(hostname -s)"
 
-mkdir -p "$PVE_DIR"
+mapfile -t NODES < <(pvecm nodes | awk 'NR>1 && $1 ~ /^[0-9]+$/ {print $3}' | sed 's/\*//')
 
-# Get nodes table
-NODES_TABLE="$(pvesh get /nodes --output-format=text)"
+uphuman () {
+  local s=${1:-0} d h m r
+  d=$((s/86400)); r=$((s%86400)); h=$((r/3600)); m=$(((r%3600)/60))
+  printf "%dd %dh %dm" "$d" "$h" "$m"
+}
 
-# Markdown header
-TABLE_HEADER="| Node | CPU % | Mem Used / Total (GiB) | Uptime (s) |
-|------|------:|-------------------------:|-------------:|"
-TABLE_ROWS=()
-
-while read -r line; do
-    [[ "$line" == node* ]] && continue  # skip header
-    node=$(echo "$line" | awk '{print $1}')
-    status=$(echo "$line" | awk '{print $2}')
-    cpu_frac=$(echo "$line" | awk '{print $3}')
-    maxcpu=$(echo "$line" | awk '{print $4}')
-    mem_used=$(echo "$line" | awk '{print $5}')
-    mem_total=$(echo "$line" | awk '{print $6}')
-    uptime=$(echo "$line" | awk '{print $7}')
-
-    cpu_pct=$(awk -v f="$cpu_frac" -v m="$maxcpu" 'BEGIN{printf("%.1f", (f/m)*100)}')
-    mem_used_g=$(awk -v b="$mem_used" 'BEGIN{printf("%.2f", b/1073741824)}')
-    mem_total_g=$(awk -v b="$mem_total" 'BEGIN{printf("%.2f", b/1073741824)}')
-
-    TABLE_ROWS+=("| $node | $cpu_pct | $mem_used_g / $mem_total_g | $uptime |")
-done <<< "$NODES_TABLE"
-
-# Write latest snapshot
-{
-  echo "# Proxmox Cluster Metrics (no jq)"
-  echo
-  echo "**Collected by**: \`$HOST\`  "
-  echo "**Timestamp**: \`$TS\`"
-  echo
-  echo "$TABLE_HEADER"
-  for row in "${TABLE_ROWS[@]}"; do
-    echo "$row"
-  done
-} > "$OUT_FILE"
-
-# Append to history
 {
   echo
-  echo "## $TS"
-  echo
-  echo "$TABLE_HEADER"
-  for row in "${TABLE_ROWS[@]}"; do
-    echo "$row"
-  done
+  echo "## $TS (collector: $HOST)"
 } >> "$HISTORY_FILE"
 
+for node in "${NODES[@]}"; do
+  STATUS_JSON="$(timeout "$PVESH_TIMEOUT" pvesh get "/nodes/$node/status" --output-format=json 2>/dev/null || true)"
+
+  if [[ -z "${STATUS_JSON// }" || "$STATUS_JSON" == "null" ]]; then
+    echo "- $node: offline" >> "$HISTORY_FILE"
+    continue
+  fi
+
+  # crude JSON parsing with sed (safe for simple flat keys)
+  get_val() {
+    echo "$STATUS_JSON" | sed -n "s/.*\"$1\"[[:space:]]*:[[:space:]]*\([0-9.]\+\).*/\1/p" | head -n1
+  }
+
+  cpu_frac=$(get_val cpu)
+  maxcpu=$(get_val maxcpu)
+  uptime=$(get_val uptime)
+
+  mem_used=$(echo "$STATUS_JSON" | sed -n 's/.*"used"[[:space:]]*:[[:space:]]*\([0-9]\+\).*"free".*/\1/p' | head -n1)
+  mem_total=$(echo "$STATUS_JSON" | sed -n 's/.*"total"[[:space:]]*:[[:space:]]*\([0-9]\+\).*"free".*/\1/p' | head -n1)
+
+  root_used=$(echo "$STATUS_JSON" | sed -n 's/.*"rootfs":[^}]*"used"[[:space:]]*:[[:space:]]*\([0-9]\+\).*/\1/p' | head -n1)
+  root_total=$(echo "$STATUS_JSON" | sed -n 's/.*"rootfs":[^}]*"total"[[:space:]]*:[[:space:]]*\([0-9]\+\).*/\1/p' | head -n1)
+
+  : "${cpu_frac:=0}" "${maxcpu:=1}" "${uptime:=0}" "${mem_used:=0}" "${mem_total:=1}" "${root_used:=0}" "${root_total:=1}"
+
+  cpu_pct=$(awk -v c="$cpu_frac" -v m="$maxcpu" 'BEGIN{ printf "%.1f", (c/m)*100 }')
+  to_gib() { awk -v b="$1" 'BEGIN{ printf "%.2f", (b/1073741824) }'; }
+
+  mem_used_g=$(to_gib "$mem_used")
+  mem_total_g=$(to_gib "$mem_total")
+  root_used_g=$(to_gib "$root_used")
+  root_total_g=$(to_gib "$root_total")
+
+  echo "- $node: CPU ${cpu_pct}% | Mem ${mem_used_g}/${mem_total_g} GiB | Uptime $(uphuman "$uptime") | RootFS ${root_used_g}/${root_total_g} GiB" \
+    >> "$HISTORY_FILE"
+done
+
 cd "$REPO_DIR"
-git add "$OUT_FILE" "$HISTORY_FILE"
-git commit -m "auto: cluster metrics @ $TS" || echo "No changes to commit."
+git add "$HISTORY_FILE"
+git diff --cached --quiet || git commit -m "auto: cluster metrics ($HOST @ $TS)"
 git push || true
 
-echo "Done. Updated $OUT_FILE and appended to $HISTORY_FILE"
+echo " Appended cluster metrics to $HISTORY_FILE"
