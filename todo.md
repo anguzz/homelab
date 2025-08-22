@@ -14,7 +14,6 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Schedule snapshot rotation or backups
 - [ ] Create backup image or template for quick redeployment 
 
-
 ###  Dev & Software lab
 
 - [ ] Continue next steps on mint_setup.sh including bookmark setup, theme setup, panel + desktop adding apps
@@ -32,11 +31,6 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Try bypass: direct syscall, manual stubs, remap `ntdll.dll`
 - [ ] Continue to read up on EDR internals, evasion methods
 - [ ] Write summary of EDR behavior/version
-
-### OpenVAS Dedicated Scanner VM
-- [ ] setup Debian 12vm, 2-4 cores, 4-8gbs, 40+ gbs disk
-- [ ] install OpenVAS, run a scan.
-
 
 
 ####  Prepare Cloud-Init Templates for Proxmox (One-time setup)
@@ -80,3 +74,5 @@ Just some stuff I want to do and have been thinking about.
 - [x] Setup network hardware  
 - [x] Deploy **Netgear GS108PE 8-port Gigabit Smart Managed Plus switch** 
 - [x] Join all current PVE nodes to cluster
+- [x] setup Debian 12vm, 2-4 cores, 4-8gbs, 40+ gbs disk
+- [x] install OpenVAS, configure home network scan.
