@@ -169,3 +169,13 @@ sudo apt install spice-vdagent
    - Paste token  
    - Enter peer’s `root@pam` password  
 
+## Setup Open-VAS github Kastervo/OpenVAS-Installation
+
+- Ran the following github script and openVAS was installed/configured. 
+
+```bash
+sudo su -
+curl -f -L https://raw.githubusercontent.com/Kastervo/OpenVAS-Installation/master/openvas_install.sh -o openvas_install.sh- sudo apt upgrade
+chmod +x openvas_install.sh 
+./openvas_install.sh
+```
