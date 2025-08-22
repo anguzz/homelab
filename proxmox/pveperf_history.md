@@ -71,3 +71,16 @@ DNS EXT:           19.44 ms
 - pve: CPU 0.0% | Mem 15.04/93.93 GiB | Uptime 0d 2h 34m | RootFS 15.04/93.93 GiB
 - pve2: CPU 0.0% | Mem 2.79/93.93 GiB | Uptime 0d 1h 19m | RootFS 2.79/93.93 GiB
 - pve3: CPU 0.0% | Mem 2.79/67.73 GiB | Uptime 0d 0h 50m | RootFS 2.79/67.73 GiB
+
+## 2025-08-21 22:21:23 - pve
+
+```
+CPU BOGOMIPS:      62668.80
+REGEX/SECOND:      7527582
+HD SIZE:           93.93 GB (/dev/mapper/pve-root)
+BUFFERED READS:    3270.02 MB/sec
+AVERAGE SEEK TIME: 0.02 ms
+FSYNCS/SECOND:     272.87
+DNS EXT:           20.85 ms
+DNS INT:           0.99 ms (attlocal.net)
+```
