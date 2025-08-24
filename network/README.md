@@ -23,6 +23,13 @@ This directory documents the layout, addressing, and security of my homelab netw
   - Gateway: `192.168.1.254` (AT&T Router)
   - DNS: `1.1.1.1`, `8.8.8.8`
 
+- **Raspberry PI display**
+  - Hostname: `angus-pi`
+  - IP: `192.168.1.125` *(DHCP)*
+  - Gateway: `192.168.1.254` (AT&T Router)
+  - DNS: `1.1.1.1`, `8.8.8.8`
+
+
 ## Switching
 
 - **Netgear GS108PE (8-port Smart Managed Plus)**

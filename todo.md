@@ -76,3 +76,5 @@ Just some stuff I want to do and have been thinking about.
 - [x] Join all current PVE nodes to cluster
 - [x] setup Debian 12vm, 2-4 cores, 4-8gbs, 40+ gbs disk
 - [x] install OpenVAS, configure home network scan.
+- [x] setup netdata monitoring on PVEs
+- [x] add dashboard to rack

@@ -159,6 +159,7 @@ sudo apt install spice-vdagent
 * In Virt-Viewer, click the **monitor icon** (top-left).
 * From the dropdown, enable multiple displays.
 
+-----------------------------------------------------------
 
 ## Creating a Proxmox Cluster
 1. On the first PVE node: **Datacenter → Cluster → Create Cluster**  
@@ -179,6 +180,7 @@ curl -f -L https://raw.githubusercontent.com/Kastervo/OpenVAS-Installation/maste
 chmod +x openvas_install.sh 
 ./openvas_install.sh
 ```
+-----------------------------------------------------------
 
 ## OpenVAS Quick Scan Guide
 
@@ -217,3 +219,94 @@ chmod +x openvas_install.sh
 | 7        | ACK + ARP       |
 | 8        | ICMP + ACK + ARP|
 | 9        | Consider Alive  |
+
+-----------------------------------------------------------
+
+
+## Netdata Setup
+
+1. Sign in to Netdata at [https://app.netdata.cloud](https://app.netdata.cloud).
+
+2. Go to **Deploy** → select **Debian**. *(can be found under integrations)*
+
+3. Run the `curl` command on the PVE node you want to add to monitoring:
+
+   ```bash
+   root@pve:~# curl https://get.netdata.cloud/kickstart.sh > /tmp/netdata-kickstart.sh && sh /tmp/netdata-kickstart.sh --stable-channel --claim-token xxxxxxxxxxxxxxxxxxxxxx --claim-rooms xxxxxxc-xxxx-xxxx-xxxx-xxxxxxxxxx --claim-url https://app.netdata.cloud
+   ```
+   
+   *note if you see any errors like `E: Failed to fetch https://enterprise.proxmox.com/debian/pve/dists/bookworm/InRelease  401  Unauthorized [IP: 66.70.154.82 443]` this is because your proxmox host is not an enterprise host, luckily Netdata will re-route the install to the latest `./netdata-x86_64-latest.gz.run.`*
+
+4. When you see the following, press **Q** to acknowledge changes, confirm with **y**:
+
+   ```bash
+    --- Installing netdata --- 
+   [/tmp/netdata-kickstart-eUKQmm3S92]# env NETDATA_CERT_TEST_URL=https://app.netdata.cloud NETDATA_CERT_MODE=check /bin/sh ./netdata-x86_64-latest.gz.run -- 
+
+     ^
+     |.-.   .-.   .-.   .-.   .  Netdata
+     |   '-'   '-'   '-'   '-'   X-Ray Vision for your infrastructure!
+     +----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+--->
+   ```
+
+5. The install should go through with:
+
+   ```bash
+   Please type y to accept, n otherwise: y
+   Creating directory /opt/netdata
+   Verifying archive integrity...  100%   MD5 checksums are OK. All good.
+   Uncompressing Netdata, X-Ray Vision for your infrastructure  100%...
+   ```
+
+6. You can now see the node info in your Netdata Cloud account, or check directly on the PVE host via its IP on port `19999` (HTTP only).
+   Example (my `.10` host):
+   `http://192.168.1.10:19999`
+   (Note: using HTTPS will throw SSL errors)
+
+-----------------------------------------------------------
+
+## Hosmoyond 3.5" LCD Setup (MPI3501)
+
+- Docs: https://www.lcdwiki.com/3.5inch_RPi_Display
+- Note: read from other users the vendor image has lots of issues
+
+##### Debian bullseye
+
+- I used bullseye, not bookworm *(thanks amazon review guy, I tried making this work on bookworm did not work)*
+- https://www.raspberrypi.com/software/operating-systems/
+- I used `2023-05-03-raspios-bullseye-armhf.img`
+- Flashed this with the windows Pi installer.
+
+
+##### Driver Install
+
+```bash
+sudo rm -rf LCD-show
+git clone https://github.com/goodtft/LCD-show.git
+chmod -R 755 LCD-show
+cd LCD-show/
+sudo ./LCD35-show
+```
+
+##### Touch Calibration
+
+```bash
+cd LCD-show/
+sudo dpkg -i -B xinput-calibrator_0.7.5-1_armhf.deb
+```
+
+Then: **Menu → Preferences → Calibrate Touchscreen**
+
+##### Rotate Display
+
+```bash
+cd LCD-show/
+sudo ./rotate.sh 90
+```
+(`0 | 90 | 180 | 270` for rotation angles)
+
+It will reboot after this and and be displaying. 
+
+- Remote: **VNC enabled** so I can access the Pi from **Proxmox host/Desktop**
+
+-----------------------------------------------------------
