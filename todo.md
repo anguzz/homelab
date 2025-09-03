@@ -56,8 +56,9 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Optional: Add Kubernetes dashboard and more features
 
 
-### Network Hardware 
-- [ ] Setup **Palo Alto PA-220**
+###  Hardware 
+- [ ] Setup **Palo Alto PA-220** 
+- [ ] Calculate energy spend 
 
 # Finished
  Action items finished in no particular order
@@ -78,3 +79,6 @@ Just some stuff I want to do and have been thinking about.
 - [x] install OpenVAS, configure home network scan.
 - [x] setup netdata monitoring on PVEs
 - [x] add dashboard to rack
+- [x] add PBS host
+- [x] add PVE2 replacement host
+

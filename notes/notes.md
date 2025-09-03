@@ -310,3 +310,42 @@ It will reboot after this and and be displaying.
 - Remote: **VNC enabled** so I can access the Pi from **Proxmox host/Desktop**
 
 -----------------------------------------------------------
+
+
+## PBS setup  
+
+1) **Create Datastore**  
+- PBS → `Datastore → Add Datastore`  
+- Name: `backup`  
+- Path: `/mnt/datastore/backup`  
+- GC/Prune: daily  
+
+2) **API Token + Permissions**  
+- PBS → `Access Control → API Tokens` → new token for `root@pam` (e.g. `root@pam!cluster`)  
+- Permissions → add on `/datastore/backup`  
+- Role: `DatastoreAdmin` (or `DatastoreBackup`)  
+
+3) **Add to PVE**  
+- PVE → `Datacenter → Storage → Add → Proxmox Backup Server`  
+- ID: `backup`  
+- Server: `pbs.angs.dev` or `192.168.1.11`  
+- Username: `root@pam!cluster`  
+- Password: API token secret  
+- Datastore: `backup`  
+- Fingerprint: paste from PBS dashboard  
+
+### extra notes  
+- Fingerprint  → fixed by copying fresh from PBS dashboard → show fingerprint → copy 
+- Datastore not found → created `backup` in PBS first  
+- API token failed → added `DatastoreAdmin` role on `/datastore/backup`  
+
+ After fixes, PVE connected successfully and datastore is usable.  
+
+-----------------------------------------------------------
+
+## Hardware info commands
+
+- Memory: `lsblk -d -o NAME,MODEL,SIZE`
+- RAM: `dmidecode -t memory | egrep -i "Size|Type:|Speed"`
+- CPU: `lscpu | egrep 'Model name|Architecture|CPU\(s\)'`
+-----------------------------------------------------------
