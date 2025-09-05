@@ -114,3 +114,19 @@ This directory documents the Proxmox system configuration, VM allocations, user 
 - **Notes:** Provides surge protection, AVR (automatic voltage regulation), and ~5–10 W self-consumption.
 
 ---
+
+
+### **Wi-Fi Dongle**
+- [ALFA Network AWUS036ACM Long-Range Wide-Coverage Dual-Band AC1200 USB Wireless Wi-Fi Adapter w/ High-Sensitivity External Antenna](https://www.amazon.com/dp/B08BJS8FXD)
+
+---
+
+### **Rack**
+- [Tecmojo 6U Network Rack, 10 inch Mini Server Rack with 2 Side Translucent Panels & 2 Top Handles, 7.87 inch Deep, for 10 inch IT Equipment & A/V Devices, White](https://www.amazon.com/dp/B0F4JZ9YJW)
+
+---
+
+### **Cabling**
+- [Rapink Patch Cables Cat6/Cat6a 2ft (24 Pack) Slim, Cat6a Ethernet Patch Cable 10G Support](https://www.amazon.com/dp/B0C49BWWSY?th=1)
+
+---
