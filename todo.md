@@ -15,7 +15,6 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Create backup image or template for quick redeployment 
 
 ###  Dev & Software lab
-
 - [ ] Continue next steps on mint_setup.sh including bookmark setup, theme setup, panel + desktop adding apps
 
 
@@ -56,9 +55,11 @@ Just some stuff I want to do and have been thinking about.
 - [ ] Optional: Add Kubernetes dashboard and more features
 
 
-###  Hardware 
-- [ ] Setup **Palo Alto PA-220** 
-- [ ] Calculate energy spend 
+#### Security 
+- [ ] Setup **Palo Alto PA-220** and firewall rules  
+- [ ] Setup **Automated SIEM/EDR deployment** (e.g., Wazuh or ELK) with a repeatable process for new VMs (research required)
+  
+
 
 # Finished
  Action items finished in no particular order
@@ -81,4 +82,5 @@ Just some stuff I want to do and have been thinking about.
 - [x] add dashboard to rack
 - [x] add PBS host
 - [x] add PVE2 replacement host
+- [x] Deploy deception controls (Canarytokens, honeyfiles, and fake credentials) across Windows, Linux, and Proxmox hosts to detect unauthorized access attempts
 
