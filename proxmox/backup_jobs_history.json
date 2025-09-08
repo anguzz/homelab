@@ -1,0 +1,22 @@
+{
+  "host": "pve",
+  "timestamp": "2025-09-08 09:40:15",
+  "backup_jobs": [
+   {
+      "enabled" : 1,
+      "fleecing" : {
+         "enabled" : "0"
+      },
+      "id" : "backup-8450ce4d-a5ec",
+      "mode" : "snapshot",
+      "next-run" : 1757836800,
+      "node" : "pve",
+      "notes-template" : "{{guestname}}",
+      "repeat-missed" : 0,
+      "schedule" : "sun 01:00",
+      "storage" : "pbs-host",
+      "type" : "vzdump",
+      "vmid" : "101,104"
+   }
+]
+}
