@@ -349,3 +349,15 @@ It will reboot after this and and be displaying.
 - RAM: `dmidecode -t memory | egrep -i "Size|Type:|Speed"`
 - CPU: `lscpu | egrep 'Model name|Architecture|CPU\(s\)'`
 -----------------------------------------------------------
+
+
+## Configuring Backups
+
+* Go to **Datacenter → Backup → Add**
+* Choose a **schedule** (e.g., weekly, daily, etc.)
+* Select **VMs or nodes** you want backed up
+* Make sure to choose the **`pbs-host`** storage (not `local`) so backups go to your Proxmox Backup Server
+* Configure **Compression type** (`zstd` recommended) and **Mode** (`snapshot` for running VMs)
+
+*Once a job is run it will show up in the Tasks at the bottom* 
+-----------------------------------------------------------
