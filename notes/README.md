@@ -5,21 +5,6 @@ This page presents a list of commonly used commands for proxmox.
 
 https://sweworld.net/cheatsheets/proxmox/
 
-## CIDR notes
------------------------------------------------------------
-CIDR is a method for allocating IP addresses and routing IP packets more efficiently than the old class-based system. It replaces traditional subnet masks like 255.255.255.0 with more compact /xx notation.
-
-example
--  192.168.1.0/24
-  - /24 means the first 24 bits are the network portion.
-  - Equivalent to subnet mask 255.255.255.0.
-  - Provides 256 IP addresses (254 usable hosts).
-
-- Common ranges:
-  - /24 → 256 IPs (254 usable)
-  - /16 → 65,536 IPs (65,534 usable)
-  - /32 → 1 IP (used for single host routes)
------------------------------------------------------------
 
 
 ## Qemu Agent
@@ -361,3 +346,47 @@ It will reboot after this and and be displaying.
 
 *Once a job is run it will show up in the Tasks at the bottom* 
 -----------------------------------------------------------
+
+## Proxmox Patching 
+
+### Repo setup (homelab / no subscription)
+
+```bash
+# Disable enterprise repos
+sed -i 's/^deb/#deb/' /etc/apt/sources.list.d/pve-enterprise.list
+sed -i 's/^deb/#deb/' /etc/apt/sources.list.d/ceph.list
+
+# Enable no-subscription repos
+echo "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription" \
+> /etc/apt/sources.list.d/pve-no-subscription.list
+
+echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" \
+> /etc/apt/sources.list.d/ceph-no-subscription.list
+
+apt update
+```
+
+### Patching a Proxmox node
+
+```bash
+apt update
+apt full-upgrade
+```
+
+### Reboot check
+
+```bash
+pveversion -v
+```
+
+If a new `pve-kernel` is installed → **reboot node**.
+
+### Notes
+
+* Proxmox patching updates **host OS + Proxmox services**
+* **Does not** patch guest VMs
+* `apt update` ≠ patching
+* `apt full-upgrade` = real patching
+* Reboot only required for kernel updates
+
+---
