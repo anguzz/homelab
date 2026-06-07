@@ -390,3 +390,54 @@ If a new `pve-kernel` is installed → **reboot node**.
 * Reboot only required for kernel updates
 
 ---
+
+
+
+## Reset Greenbone/OpenVAS Admin Password 
+
+If the OpenVAS/Greenbone web UI admin password is lost, reset it from the terminal using the local Greenbone service account.
+
+### 1. Become root
+
+```bash
+su -
+````
+
+Enter the root password when prompted.
+
+### 2. Find the Greenbone service user
+
+```bash
+getent passwd | grep -E 'gvm|openvas|gvmd'
+```
+
+Example output:
+
+```bash
+gvm:x:995:994::/home/gvm:/usr/sbin/nologin
+```
+
+This means the service user is `gvm`.
+
+### 3. Reset the admin password
+
+```bash
+runuser -u gvm -- gvmd --user=admin --new-password='NewStrongPasswordHere'
+```
+
+Replace `gvm` with whatever service user was found in the previous step.
+
+
+### 4. Restart Greenbone services
+
+```bash
+systemctl restart gvmd gsad
+```
+
+### Notes
+
+`su -` switches to the root account so the password reset command can be run without sudo.
+
+`getent passwd` checks local system accounts. Grepping for `gvm`, `openvas`, or `gvmd` helps identify which Linux service account Greenbone uses.
+
+`runuser -u gvm -- ...` runs the `gvmd` password reset command as the Greenbone service user instead of root. This matters because Greenbone expects database/application commands to be executed under its own service account.
