@@ -224,6 +224,8 @@ Modules
 
 Both devices should eventually appear in the agent list.
 
+<img width="1301" height="584" alt="qualys" src="https://github.com/user-attachments/assets/9acda3cf-c640-4808-a39b-4d6947c65f11" />
+
 Check for:
 
 ```text
