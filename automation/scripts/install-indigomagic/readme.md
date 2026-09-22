@@ -6,6 +6,9 @@ The upstream page ships a single tarball plus a page of manual instructions: ext
 
 Tested on Linux Mint 22 Cinnamon. Targets Debian, Ubuntu and Mint (apt) on Xfce, Cinnamon, MATE or GNOME.
 
+<img width="1908" height="1072" alt="image" src="https://github.com/user-attachments/assets/cdf3edb3-0ae2-4794-9c2b-63ee112a7769" />
+
+
 ## Quick start
 
 ```shell
